@@ -1,0 +1,9 @@
+.card-container {
+  margin: 0 auto;
+  display: inline-block;
+  padding-left: 10rem;
+}
+th {
+  padding-left: 100px;
+  text-align: center;
+}
