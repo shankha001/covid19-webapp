@@ -1,0 +1,51 @@
+.global__stats {
+  text-align: center;
+  margin: 50px auto 0;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+
+  &-div {
+    margin: 8px;
+    padding: 2px 8px;
+    font-size: 24px;
+    line-height: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    box-shadow: 0px 0px 8px grey;
+    border-radius: 5px;
+    width: 300px;
+  }
+  &-A {
+    &1 {
+      color: #e53e3e;
+      font-size: 30px;
+    }
+    &2 {
+      color: #38a169;
+      font-size: 30px;
+    }
+    &3 {
+      color: #718096;
+      font-size: 30px;
+    }
+  }
+  &-B {
+    color: #718096;
+  }
+  &-C {
+    &1 {
+      color: #e53e3e;
+      font-size: 18px;
+    }
+    &2 {
+      color: #38a169;
+      font-size: 18px;
+    }
+    &3 {
+      color: #718096;
+      font-size: 16px;
+    }
+  }
+}
