@@ -7,3 +7,7 @@ th {
   padding-left: 100px;
   text-align: center;
 }
+.table-countries:first-child {
+  background-color: orange;
+  width: 50%;
+}

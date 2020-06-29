@@ -1,0 +1,17 @@
+.table-countries {
+  &-country {
+    background-image: linear-gradient(to bottom right, #5e35b1, #9778ce);
+  }
+  &-confirmed {
+    background-image: linear-gradient(to bottom right, #00a0b2, #00bcd4);
+  }
+  &-deaths {
+    background-color: #e57373;
+  }
+  &-recovered {
+    background-color: #4caf50;
+  }
+}
+
+Table {
+}
