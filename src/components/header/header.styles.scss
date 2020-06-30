@@ -47,16 +47,24 @@
     padding: 10px 15px;
     transition: all 0.4s;
     cursor: pointer;
+    border: none;
     letter-spacing: 1px;
+    outline: none;
     font-weight: 600;
-    &:visited {
+
+    &:visited,
+    &:link {
       color: black;
+      outline: none;
     }
     &:hover {
       transform: translateY(-5px) scale(1.05);
+      color: black;
     }
     &:active {
       transform: translateY(0);
+      color: black;
+      outline: none;
     }
   }
 }

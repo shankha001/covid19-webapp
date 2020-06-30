@@ -3,6 +3,7 @@ import './world.styles.scss';
 import Countries from '../../components/Countries-data/countries-data.component';
 import Global from '../../components/Global-data/global-data.component';
 import Grid from '@material-ui/core/Grid';
+import PieChart from '../../components/pieChart/pieChart-component';
 
 class World extends Component {
   constructor() {
@@ -30,6 +31,14 @@ class World extends Component {
         <Grid container spacing={3} className="grid-name">
           <Grid item xs={12}>
             <Global {...this.state.datarec.Global} />
+          </Grid>
+
+          <Grid item xs={6}>
+            <div className="pie-global-style">
+              <div className="pie-global-style-individual">
+                <PieChart {...this.state.datarec.Global} />
+              </div>
+            </div>
           </Grid>
 
           <Grid item xs={12}>

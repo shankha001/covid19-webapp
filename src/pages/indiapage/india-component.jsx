@@ -34,8 +34,6 @@ class India extends React.Component {
     const recovered = this.state.liveData[9];
     const active = this.state.liveData[10];
 
-    console.log(deaths);
-
     return (
       <div>
         <div className="global__stats">
