@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './world.styles.scss';
-import UniversalData from '../components/universal-data/universal-data.component';
+import UniversalData from '../../components/universal-data/universal-data.component';
 
 class World extends Component {
   constructor() {
     super();
     this.state = {
       datarec: [],
+      loading: true,
     };
   }
 
@@ -14,9 +15,10 @@ class World extends Component {
     const myAsyncFunction = async () => {
       const dataResponse = await fetch('https://api.covid19api.com/summary');
       const datas = await dataResponse.json();
-      this.setState({ datarec: datas });
+      this.setState({ datarec: datas, chartData: {} });
     };
     myAsyncFunction();
+    this.setState({ loading: false });
   }
 
   render() {
