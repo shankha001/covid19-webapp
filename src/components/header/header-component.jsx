@@ -11,12 +11,12 @@ const Header = () => (
       </Link>
       <div className="options">
         <Link className="option" to="/world">
-          Home
+          World
         </Link>
-        <Link className="option" to="/">
-          Statistics
+        <Link className="option" to="/india">
+          India
         </Link>
-        <Link className="option" to="/">
+        <Link className="option" to="/admin">
           Admin Panel
         </Link>
       </div>

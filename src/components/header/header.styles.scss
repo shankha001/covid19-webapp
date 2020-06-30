@@ -4,11 +4,34 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+  position: relative;
 
   .logo {
+    position: absolute;
+    top: 0;
+    left: 0;
     height: 100%;
     width: 70px;
-    padding-left: 25px;
+
+    -webkit-animation: spin 4s linear infinite;
+    -moz-animation: spin 4s linear infinite;
+    animation: spin 4s linear infinite;
+  }
+  @-moz-keyframes spin {
+    100% {
+      -moz-transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  @keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
   }
 }
 .options {

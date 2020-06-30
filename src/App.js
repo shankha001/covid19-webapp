@@ -5,6 +5,7 @@ import Header from './components/header/header-component';
 import './App.css';
 import World from './pages/worldpage/world-component';
 import India from './pages/indiapage/india-component';
+import AdminPage from './pages/adminpage/adminpage-component';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/world" component={World} />
           <Route exact path="/India" component={India} />
+          <Route exact path="/admin" component={AdminPage} />
         </Switch>
       </div>
     );

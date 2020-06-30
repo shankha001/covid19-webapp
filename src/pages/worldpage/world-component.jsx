@@ -37,7 +37,7 @@ class World extends Component {
             <Countries {...this.state.datarec.Countries} />
           </Grid>
 
-          <span>Time Updated : {this.state.datarec.Date}</span>
+          <span className="date">Time Updated : {this.state.datarec.Date}</span>
         </Grid>
       </div>
     );
