@@ -1,12 +1,6 @@
 import React from 'react';
 import './countries-data.styles.scss';
 
-//Material UI
-import { withStyles } from '@material-ui/core/styles';
-import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import { TableBody, Table } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 
 class Countries extends React.Component {
@@ -28,118 +22,119 @@ class Countries extends React.Component {
       ],
       countryData: [],
       globalData: [],
+      searchInput: '',
     };
   }
+  searchByCountry = (e) => {
+    let input, filter, table, tr, td, i, txtValue;
+    input = e.target.value;
+    filter = input.toUpperCase();
+    table = document.getElementById('myTable');
+    tr = table.getElementsByTagName('tr');
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName('td')[0];
+
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = '';
+        } else {
+          tr[i].style.display = 'none';
+        }
+      }
+    }
+  };
+
   render() {
     for (let i in this.props) {
       this.state.countryData.push(this.props[i]);
     }
 
-    const StyledTableRow = withStyles((theme) => ({
-      root: {
-        '&:nth-of-type(odd)': {
-          backgroundColor: theme.palette.action.hover,
-        },
-      },
-    }))(TableRow);
-
-    const StyledTableCell = withStyles((theme) => ({
-      head: {
-        backgroundColor: theme.palette.common.black,
-        color: theme.palette.common.white,
-        textAlign: 'center',
-        borderRight: '1px solid grey',
-        position: 'sticky',
-      },
-      body: {
-        fontSize: 15,
-        color: theme.palette.common.white,
-        textAlign: 'center',
-        borderRight: '1px solid black',
-        borderBottom: '1px solid black',
-      },
-    }))(TableCell);
-
     return (
       <Grid container justify="center">
-        <Table stickyHeader aria-label="sticky table">
-          {this.state.headerData.map(
-            ({
-              countryCode,
-              country,
-              newConfirmed,
-              newDeaths,
-              newRecovered,
-              totalConfirmed,
-              totalDeaths,
-              totalRecovered,
-            }) => (
-              <TableHead key={countryCode}>
-                <StyledTableRow>
-                  <StyledTableCell className="table-countries-country-header">
-                    {country}
-                  </StyledTableCell>
-                  <StyledTableCell className="table-countries-confirmed-header">
-                    {newConfirmed}
-                  </StyledTableCell>
-                  <StyledTableCell className="table-countries-deaths-header">
-                    {newDeaths}
-                  </StyledTableCell>
-                  <StyledTableCell className="table-countries-recovered-header">
-                    {newRecovered}
-                  </StyledTableCell>
-                  <StyledTableCell className="table-countries-confirmed-header">
-                    {totalConfirmed}
-                  </StyledTableCell>
-                  <StyledTableCell className="table-countries-deaths-header">
-                    {totalDeaths}
-                  </StyledTableCell>
-                  <StyledTableCell className="table-countries-recovered-header">
-                    {totalRecovered}
-                  </StyledTableCell>
-                </StyledTableRow>
-              </TableHead>
-            )
-          )}
-          {this.state.countryData.map(
-            ({
-              CountryCode,
-              Country,
-              NewConfirmed,
-              NewDeaths,
-              NewRecovered,
-              TotalConfirmed,
-              TotalDeaths,
-              TotalRecovered,
-            }) => (
-              <TableBody key={CountryCode}>
-                <StyledTableRow className="table-countries">
-                  <StyledTableCell className="table-countries-country">
-                    {Country}
-                  </StyledTableCell>
-                  <StyledTableCell className="table-countries-confirmed">
-                    {NewConfirmed}
-                  </StyledTableCell>
-                  <StyledTableCell className="table-countries-deaths">
-                    {NewDeaths}
-                  </StyledTableCell>
-                  <StyledTableCell className="table-countries-recovered">
-                    {NewRecovered}
-                  </StyledTableCell>
-                  <StyledTableCell className="table-countries-confirmed">
-                    {TotalConfirmed}
-                  </StyledTableCell>
-                  <StyledTableCell className="table-countries-deaths">
-                    {TotalDeaths}
-                  </StyledTableCell>
-                  <StyledTableCell className="table-countries-recovered">
-                    {TotalRecovered}
-                  </StyledTableCell>
-                </StyledTableRow>
-              </TableBody>
-            )
-          )}
-        </Table>
+        <input
+          type="text"
+          id="myInput"
+          onChange={this.searchByCountry}
+          placeholder="Search for Country"
+        />
+        <div className="table-container">
+          <table id="myTable">
+            {this.state.headerData.map(
+              ({
+                countryCode,
+                country,
+                newConfirmed,
+                newDeaths,
+                newRecovered,
+                totalConfirmed,
+                totalDeaths,
+                totalRecovered,
+              }) => (
+                <thead key={countryCode}>
+                  <tr>
+                    <th className="table-countries-country-header">
+                      {country}
+                    </th>
+                    <th className="table-countries-confirmed-header">
+                      {newConfirmed}
+                    </th>
+                    <th className="table-countries-deaths-header">
+                      {newDeaths}
+                    </th>
+                    <th className="table-countries-recovered-header">
+                      {newRecovered}
+                    </th>
+                    <th className="table-countries-confirmed-header">
+                      {totalConfirmed}
+                    </th>
+                    <th className="table-countries-deaths-header">
+                      {totalDeaths}
+                    </th>
+                    <th className="table-countries-recovered-header">
+                      {totalRecovered}
+                    </th>
+                  </tr>
+                </thead>
+              )
+            )}
+            {this.state.countryData.map(
+              ({
+                CountryCode,
+                Country,
+                NewConfirmed,
+                NewDeaths,
+                NewRecovered,
+                TotalConfirmed,
+                TotalDeaths,
+                TotalRecovered,
+              }) => (
+                <tbody key={CountryCode}>
+                  <tr className="table-countries">
+                    <td className="table-countries-country">{Country}</td>
+                    <td className="table-countries-confirmed">
+                      {NewConfirmed}
+                    </td>
+                    <td className="table-countries-deaths">{NewDeaths}</td>
+                    <td className="table-countries-recovered">
+                      {NewRecovered}
+                    </td>
+                    <td className="table-countries-confirmed">
+                      {TotalConfirmed}
+                    </td>
+                    <td className="table-countries-deaths">{TotalDeaths}</td>
+                    <td className="table-countries-recovered">
+                      {TotalRecovered}
+                    </td>
+                  </tr>
+                </tbody>
+              )
+            )}
+          </table>
+        </div>
       </Grid>
     );
   }
