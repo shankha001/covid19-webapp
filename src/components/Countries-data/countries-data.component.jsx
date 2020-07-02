@@ -25,28 +25,6 @@ class Countries extends React.Component {
       searchInput: '',
     };
   }
-  searchByCountry = (e) => {
-    let input, filter, table, tr, td, i, txtValue;
-    input = e.target.value;
-    filter = input.toUpperCase();
-    table = document.getElementById('myTable');
-    tr = table.getElementsByTagName('tr');
-
-    // Loop through all table rows, and hide those who don't match the search query
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName('td')[0];
-
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = '';
-        } else {
-          tr[i].style.display = 'none';
-        }
-      }
-    }
-  };
 
   render() {
     for (let i in this.props) {
@@ -55,12 +33,6 @@ class Countries extends React.Component {
 
     return (
       <Grid container justify="center">
-        <input
-          type="text"
-          id="myInput"
-          onChange={this.searchByCountry}
-          placeholder="Search for Country"
-        />
         <div className="table-container">
           <table id="myTable">
             {this.state.headerData.map(

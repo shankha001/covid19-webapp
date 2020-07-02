@@ -23,6 +23,29 @@ class World extends Component {
     myAsyncFunction();
   }
 
+  searchByCountry = (e) => {
+    let input, filter, table, tr, td, i, txtValue;
+    input = e.target.value;
+    filter = input.toUpperCase();
+    table = document.getElementById('myTable');
+    tr = table.getElementsByTagName('tr');
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName('td')[0];
+
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = '';
+        } else {
+          tr[i].style.display = 'none';
+        }
+      }
+    }
+  };
+
   render() {
     console.log();
 
@@ -43,6 +66,13 @@ class World extends Component {
 
           <Grid item xs={12}>
             <h1 style={{ textAlign: 'center' }}>Pandemic by Country</h1>
+            <input
+              type="text"
+              id="myInput"
+              onChange={this.searchByCountry}
+              placeholder="Search for Country"
+              className="searchbox"
+            />
             <Countries {...this.state.datarec.Countries} />
           </Grid>
 

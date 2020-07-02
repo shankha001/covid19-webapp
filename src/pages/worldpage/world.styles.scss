@@ -25,3 +25,17 @@ body {
     height: 280px;
   }
 }
+.searchbox {
+  outline: none;
+
+  border: 0;
+  margin-left: 20px;
+  padding: 10px 12px 6px;
+  background-color: transparent;
+  border-bottom: 1px solid grey;
+  color: grey;
+  transition: all 0.4s;
+  &:focus {
+    transform: scale(1.1);
+  }
+}
