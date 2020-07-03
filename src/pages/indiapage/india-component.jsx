@@ -3,27 +3,41 @@ import './india.styles.scss';
 import axios from 'axios';
 import PieChart from '../../components/pieChart/pieChart-component';
 import LineChart from '../../components/lineChart/lineChart-component';
+import BarChart from '../../components/barChart/barChart-component';
 
 function India() {
   const [indiaData, setindiaData] = useState([]);
+  const [stateData, setstateData] = useState([]);
   const [chartData, setchartData] = useState([]);
   const [linechartData, setlinechartData] = useState([]);
+  const [barchartData, setbarchartData] = useState([]);
 
   let liveData = [];
 
-  //Fetch Data
+  //Fetch Countries Data
   useEffect(() => {
     axios
       .get('https://api.covid19api.com/country/india')
       .then((res) => {
-        console.log(res);
-
         setindiaData(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+  //Fetch State Data
+  useEffect(() => {
+    axios
+      .get('https://api.covid19india.org/data.json')
+      .then((res) => {
+        setstateData(res.data.statewise);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  let stateLength = stateData.length;
 
   let length = indiaData.length;
   let latestData = indiaData[length - 1];
@@ -84,6 +98,39 @@ function India() {
     });
   }, [indiaData, length]);
 
+  //Bar chart
+  useEffect(() => {
+    let barchartActive = [];
+    let barchartlabel = [];
+    let barchartDeaths = [];
+
+    for (let i = 1; i < stateLength; i++) {
+      barchartActive.push(stateData[i].active);
+      barchartlabel.push(stateData[i].statecode);
+      barchartDeaths.push(stateData[i].deaths);
+    }
+
+    setbarchartData({
+      labels: barchartlabel,
+      datasets: [
+        {
+          label: 'Active',
+          data: barchartActive,
+          fill: true,
+          backgroundColor: 'rgba(75,192,192,0.2)',
+          borderColor: 'rgba(75,192,192,1)',
+        },
+        {
+          label: 'Deaths',
+          data: barchartDeaths,
+          fill: true,
+          backgroundColor: 'red',
+          borderColor: 'rgba(75,192,192,1)',
+        },
+      ],
+    });
+  }, [stateData, stateLength]);
+
   return (
     <div>
       <div className="global__stats">
@@ -112,6 +159,9 @@ function India() {
         <div className="global__stats-div">
           <LineChart data={linechartData} width={50} height={50} />
         </div>
+      </div>
+      <div className="global__stats-div">
+        <BarChart data={barchartData} />
       </div>
     </div>
   );
