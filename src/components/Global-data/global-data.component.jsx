@@ -4,7 +4,7 @@ import PieChart from '../../components/pieChart/pieChart-component';
 import LineChart from '../lineChart/lineChart-component';
 
 function Global(props) {
-  const [chartData, setchartData] = useState([]);
+  const [chartData, setchartData] = useState({});
 
   useEffect(() => {
     let newData = [
@@ -16,7 +16,7 @@ function Global(props) {
       labels: ['Confirmed', 'Deaths', 'Recovered'],
       datasets: [
         {
-          label: '# Stats',
+          label: 'Stats',
           data: newData,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',

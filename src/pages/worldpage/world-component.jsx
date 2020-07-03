@@ -14,6 +14,7 @@ function World() {
     axios
       .get('https://api.covid19api.com/summary')
       .then((res) => {
+        console.log(res);
         setglobalData(res.data.Global);
         setcountriesData(res.data.Countries);
       })
@@ -51,7 +52,9 @@ function World() {
         </Grid>
 
         <Grid item xs={12}>
-          <h1 style={{ textAlign: 'center' }}>Pandemic by Country</h1>
+          <h1 style={{ textAlign: 'center', color: 'grey' }}>
+            Pandemic by Country
+          </h1>
           <input
             type="text"
             id="myInput"

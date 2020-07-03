@@ -41,7 +41,6 @@
   align-items: center;
   justify-content: flex-end;
 
-  color: red;
   .option {
     text-decoration: none;
     padding: 10px 15px;
@@ -54,7 +53,7 @@
 
     &:visited,
     &:link {
-      color: black;
+      color: grey;
       outline: none;
     }
     &:hover {
