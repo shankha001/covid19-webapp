@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './global-data.styles.scss';
 import PieChart from '../../components/pieChart/pieChart-component';
+import LineChart from '../lineChart/lineChart-component';
 
 function Global(props) {
   const [data, setData] = useState([]);
@@ -55,8 +56,13 @@ function Global(props) {
           <p className="global__stats-C3">+{props.NewDeaths} new Deaths</p>
         </div>
       </div>
-      <div className="global__stats-div">
-        <PieChart data={data} width={100} height={50} />
+      <div className="global__stats-pie">
+        <div className="global__stats-pie-chart">
+          <PieChart data={data} width={50} height={50} />
+        </div>
+        <div className="global__stats-pie-chart">
+          <LineChart />
+        </div>
       </div>
     </div>
   );

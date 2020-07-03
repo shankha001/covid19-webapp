@@ -52,22 +52,23 @@ class Countries extends React.Component {
                       {country}
                     </th>
                     <th className="table-countries-confirmed-header">
-                      {newConfirmed}
-                    </th>
-                    <th className="table-countries-deaths-header">
-                      {newDeaths}
+                      {totalConfirmed}
                     </th>
                     <th className="table-countries-recovered-header">
-                      {newRecovered}
-                    </th>
-                    <th className="table-countries-confirmed-header">
-                      {totalConfirmed}
+                      {totalRecovered}
                     </th>
                     <th className="table-countries-deaths-header">
                       {totalDeaths}
                     </th>
+
+                    <th className="table-countries-confirmed-header">
+                      {newConfirmed}
+                    </th>
                     <th className="table-countries-recovered-header">
-                      {totalRecovered}
+                      {newRecovered}
+                    </th>
+                    <th className="table-countries-deaths-header">
+                      {newDeaths}
                     </th>
                   </tr>
                 </thead>
@@ -88,19 +89,20 @@ class Countries extends React.Component {
                   <tr className="table-countries">
                     <td className="table-countries-country">{Country}</td>
                     <td className="table-countries-confirmed">
-                      {NewConfirmed}
-                    </td>
-                    <td className="table-countries-deaths">{NewDeaths}</td>
-                    <td className="table-countries-recovered">
-                      {NewRecovered}
-                    </td>
-                    <td className="table-countries-confirmed">
                       {TotalConfirmed}
                     </td>
-                    <td className="table-countries-deaths">{TotalDeaths}</td>
                     <td className="table-countries-recovered">
                       {TotalRecovered}
                     </td>
+                    <td className="table-countries-deaths">{TotalDeaths}</td>
+
+                    <td className="table-countries-confirmed">
+                      +{NewConfirmed}
+                    </td>
+                    <td className="table-countries-recovered">
+                      +{NewRecovered}
+                    </td>
+                    <td className="table-countries-deaths">+{NewDeaths}</td>
                   </tr>
                 </tbody>
               )
