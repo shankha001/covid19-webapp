@@ -15,7 +15,7 @@ class Countries extends React.Component {
           newDeaths: ' New Deaths',
           newRecovered: ' New Recovered',
           totalConfirmed: 'Total Confirmed',
-          totalDeaths: 'Total Death',
+          totalDeaths: 'Total Deaths',
           totalRecovered: 'Total Recovered',
           countryCode: 'table',
         },
