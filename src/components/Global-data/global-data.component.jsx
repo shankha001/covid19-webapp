@@ -1,7 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './global-data.styles.scss';
+import PieChart from '../../components/pieChart/pieChart-component';
 
-const Global = function Global(props) {
+function Global(props) {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    let newData = [
+      props.TotalConfirmed,
+      props.TotalDeaths,
+      props.TotalRecovered,
+    ];
+    setData({
+      labels: ['Confirmed', 'Deaths', 'Recovered'],
+      datasets: [
+        {
+          label: '# Stats',
+          data: newData,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+          ],
+          borderWidth: 1,
+        },
+      ],
+    });
+  }, [props]);
+
   return (
     <div>
       <div className="global__stats">
@@ -24,7 +55,10 @@ const Global = function Global(props) {
           <p className="global__stats-C3">+{props.NewDeaths} new Deaths</p>
         </div>
       </div>
+      <div className="global__stats-div">
+        <PieChart data={data} width={100} height={50} />
+      </div>
     </div>
   );
-};
+}
 export default Global;
