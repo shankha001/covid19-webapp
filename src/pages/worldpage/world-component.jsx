@@ -14,7 +14,6 @@ function World() {
     axios
       .get('https://api.covid19api.com/summary')
       .then((res) => {
-        console.log(res);
         setglobalData(res.data.Global);
         setcountriesData(res.data.Countries);
       })

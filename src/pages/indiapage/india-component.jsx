@@ -41,6 +41,7 @@ function India() {
 
   let length = indiaData.length;
   let latestData = indiaData[length - 1];
+
   for (let i in latestData) {
     liveData.push(latestData[i]);
   }
@@ -160,6 +161,32 @@ function India() {
           <LineChart data={linechartData} width={50} height={50} />
         </div>
       </div>
+
+      <table className="table-container">
+        <thead>
+          <tr>
+            <th className="table-countries-country-header">State</th>
+            <th className="table-countries-country-header">Active</th>
+            <th className="table-countries-country-header">Confirmed</th>
+            <th className="table-countries-country-header">Recovered</th>
+            <th className="table-countries-country-header">Deaths</th>
+          </tr>
+        </thead>
+        {stateData.map(
+          ({ statecode, state, confirmed, recovered, deaths, active }) => (
+            <tbody key={statecode}>
+              <tr className="table-countries">
+                <td className="table-countries-country">{state}</td>
+                <td className="table-countries-deaths">{active}</td>
+
+                <td className="table-countries-confirmed">{confirmed}</td>
+                <td className="table-countries-recovered">{recovered}</td>
+                <td className="table-countries-deaths">{deaths}</td>
+              </tr>
+            </tbody>
+          )
+        )}
+      </table>
       <div className="global__stats-div">
         <BarChart data={barchartData} />
       </div>
