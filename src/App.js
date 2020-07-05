@@ -7,6 +7,7 @@ import World from './pages/worldpage/world-component';
 import India from './pages/indiapage/india-component';
 import AdminPage from './pages/adminpage/adminpage-component';
 import HomePage from './pages/homepage/homepage-component';
+import Footer from './components/footer/footer-component';
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
           <Route exact path="/India" component={India} />
           <Route exact path="/admin" component={AdminPage} />
         </Switch>
+        <Footer />
       </div>
     );
   }

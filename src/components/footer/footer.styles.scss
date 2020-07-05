@@ -1,0 +1,31 @@
+.footer {
+  margin-top: 20px;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  font-size: 30px;
+  &-social {
+    margin: auto 0;
+    padding-left: 40px;
+    .fab {
+      padding: 10px;
+      color: #161625;
+      &:hover {
+        color: #ff5252;
+      }
+    }
+  }
+  &-brand {
+    text-align: center;
+    margin: auto 0;
+    padding-right: 50px;
+    color: #fb7373;
+    font-weight: 600;
+
+    .dialogue {
+      font-size: 20px;
+      color: black;
+    }
+  }
+}
