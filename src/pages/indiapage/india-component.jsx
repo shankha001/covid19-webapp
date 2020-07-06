@@ -79,9 +79,13 @@ function India() {
   //Line CHART
   useEffect(() => {
     let linechartConfirmed = [];
+    let linechartDeaths = [];
     let linechartDate = [];
+    let linechartRecovered = [];
     for (let i = 0; i < length; i++) {
       linechartConfirmed.push(indiaData[i].Confirmed);
+      linechartDeaths.push(indiaData[i].Deaths);
+      linechartRecovered.push(indiaData[i].Recovered);
       linechartDate.push(indiaData[i].Date);
     }
 
@@ -94,6 +98,20 @@ function India() {
           fill: true,
           backgroundColor: 'rgba(75,192,192,0.2)',
           borderColor: 'rgba(75,192,192,1)',
+        },
+        {
+          label: 'Total Deaths',
+          data: linechartDeaths,
+          fill: false,
+          backgroundColor: 'red',
+          borderColor: 'red',
+        },
+        {
+          label: 'Total Recovered',
+          data: linechartRecovered,
+          fill: false,
+          backgroundColor: 'orange',
+          borderColor: 'orange',
         },
       ],
     });

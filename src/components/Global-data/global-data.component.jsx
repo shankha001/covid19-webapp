@@ -56,11 +56,12 @@ function Global(props) {
           <p className="global__stats-C3">+{props.NewDeaths} new Deaths</p>
         </div>
       </div>
-      <div className="global__stats-pie">
-        <div className="global__stats-pie-chart">
-          <PieChart data={chartData} width={50} height={50} />
+
+      <div className="global__stats-chart">
+        <div className="global__stats-chart-1-of-2">
+          <PieChart data={chartData} />
         </div>
-        <div className="global__stats-pie-chart">
+        <div className="global__stats-chart-1-of-2">
           <LineChart />
         </div>
       </div>

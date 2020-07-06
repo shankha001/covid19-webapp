@@ -3,7 +3,8 @@ import './world.styles.scss';
 import axios from 'axios';
 import Countries from '../../components/Countries-data/countries-data.component';
 import Global from '../../components/Global-data/global-data.component';
-import Grid from '@material-ui/core/Grid';
+import { Link } from 'react-router-dom';
+import { ReactComponent as Svg3 } from '../../assets/home-india.svg';
 
 function World() {
   const [globalData, setglobalData] = useState([]);
@@ -44,28 +45,43 @@ function World() {
   };
 
   return (
-    <div>
-      <Grid container spacing={3} className="grid-name">
-        <Grid item xs={12}>
-          <Global {...globalData} />
-        </Grid>
-
-        <Grid item xs={12}>
-          <h1 style={{ textAlign: 'center', color: 'grey' }}>
-            Pandemic by Country
-          </h1>
+    <React.Fragment>
+      <Global {...globalData} />
+      <div>
+        <h1 className="table-title">Pandemic by Country</h1>
+        <div className="search-container">
+          <label htmlFor="myInput">
+            <i className="fas fa-search"> </i>
+          </label>
           <input
             type="text"
             id="myInput"
             onChange={searchByCountry}
-            placeholder="Search for Country"
+            placeholder="Search for Country..."
             className="searchbox"
+            autocomplete="off"
           />
-          <Countries {...countriesData} />
-        </Grid>
-        <span className="date">Time Updated : </span>
-      </Grid>
-    </div>
+        </div>
+
+        <Countries {...countriesData} />
+
+        <section className="world-stats-container">
+          <div className="world-stats-content">
+            <h2 className="world-stats-content__text">
+              Check India Statistics
+            </h2>
+            <Link to="/india">
+              <button className="world-stats-content__btn">
+                &#8618; Click Here
+              </button>
+            </Link>
+          </div>
+          <div className="world-stats-image">
+            <Svg3 className="world-stats-image__img" />
+          </div>
+        </section>
+      </div>
+    </React.Fragment>
   );
 }
 

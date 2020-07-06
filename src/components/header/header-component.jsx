@@ -10,11 +10,11 @@ const Header = () => (
     </Link>
     <div className="options">
       <Link className="option" to="/">
-        <i class="fas fa-home icon"></i>
+        <i className="fas fa-home icon"></i>
         Home
       </Link>
       <Link className="option" to="/world">
-        <i class="fas fa-globe icon"></i>
+        <i className="fas fa-globe icon"></i>
         World
       </Link>
       <Link className="option" to="/india">
@@ -26,7 +26,7 @@ const Header = () => (
         India
       </Link>
       <Link className="option" to="/admin">
-        <i class="fas fa-user-cog icon"></i>
+        <i className="fas fa-user-cog icon"></i>
         Login
       </Link>
     </div>

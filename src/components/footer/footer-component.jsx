@@ -6,13 +6,13 @@ function Footer() {
     <div className="footer">
       <div className="footer-social">
         <a href="https://github.com/shankha001">
-          <i class="fab fa-github"></i>
+          <i className="fab fa-github"></i>
         </a>
         <a href="https://www.linkedin.com/in/shankha-subhra-biswas-85b766191/">
-          <i class="fab fa-linkedin-in"></i>
+          <i className="fab fa-linkedin-in"></i>
         </a>
         <a href="https://www.instagram.com/ssb_op/">
-          <i class="fab fa-instagram"></i>
+          <i className="fab fa-instagram"></i>
         </a>
       </div>
       <div className="footer-brand">

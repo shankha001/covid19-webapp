@@ -8,6 +8,8 @@ function LineChart(props) {
       width={220}
       height={120}
       options={{
+        responsive: true,
+        maintainAspectRatio: true,
         scales: {
           xAxes: [
             {
