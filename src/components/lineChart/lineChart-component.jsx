@@ -5,8 +5,6 @@ function LineChart(props) {
   return (
     <Line
       data={props.data}
-      width={220}
-      height={120}
       options={{
         responsive: true,
         maintainAspectRatio: true,

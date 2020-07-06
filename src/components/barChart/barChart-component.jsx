@@ -2,7 +2,15 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
 function BarChart(props) {
-  return <Bar data={props.data} width={220} height={120} />;
+  return (
+    <Bar
+      data={props.data}
+      options={{
+        responsive: true,
+        maintainAspectRatio: true,
+      }}
+    />
+  );
 }
 
 export default BarChart;

@@ -46,6 +46,7 @@ function World() {
 
   return (
     <React.Fragment>
+      <h1 className="page-head">Statistics-World</h1>
       <Global {...globalData} />
       <div>
         <h1 className="table-title">Pandemic by Country</h1>

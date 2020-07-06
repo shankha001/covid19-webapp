@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './india.styles.scss';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 import PieChart from '../../components/pieChart/pieChart-component';
 import LineChart from '../../components/lineChart/lineChart-component';
 import BarChart from '../../components/barChart/barChart-component';
+import { ReactComponent as Svg2 } from '../../assets/home-world.svg';
 
 function India() {
   const [indiaData, setindiaData] = useState([]);
@@ -150,12 +153,37 @@ function India() {
     });
   }, [stateData, stateLength]);
 
+  const searchByState = (e) => {
+    let input, filter, table, tr, td, i, txtValue;
+    input = e.target.value;
+    filter = input.toUpperCase();
+    table = document.getElementById('myTable');
+    tr = table.getElementsByTagName('tr');
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName('td')[0];
+
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = '';
+        } else {
+          tr[i].style.display = 'none';
+        }
+      }
+    }
+  };
+
   return (
     <div>
       <div className="global__stats">
         <div className="global__stats-div">
-          <p className="global__stats-A3">{active}</p>
-          <p className="global__stats-B">Active</p>
+          <p className="global__stats-A3" style={{ color: '#2091ba' }}>
+            {active}
+          </p>
+          <p className="global__stats-B " data-aos="zoom-in">
+            Active
+          </p>
         </div>
         <div className="global__stats-div">
           <p className="global__stats-A1">{confirmed}</p>
@@ -171,43 +199,78 @@ function India() {
           <p className="global__stats-B">Deaths</p>
         </div>
       </div>
-      <div className="global__stats-div-pie">
-        <div className="global__stats-div">
-          <PieChart data={chartData} width={50} height={50} />
+
+      <div className="global__stats-chart">
+        <div className="global__stats-chart-1-of-2">
+          <PieChart data={chartData} />
         </div>
-        <div className="global__stats-div">
-          <LineChart data={linechartData} width={50} height={50} />
+        <div className="global__stats-chart-1-of-2">
+          <LineChart data={linechartData} />
         </div>
       </div>
+      <h1 className="table-title">Pandemic by States</h1>
+      <div className="search-container">
+        <label htmlFor="myInput">
+          <i className="fas fa-search"> </i>
+        </label>
+        <input
+          type="text"
+          id="myInput"
+          onChange={searchByState}
+          placeholder="Search for State..."
+          className="searchbox"
+          autocomplete="off"
+        />
+      </div>
+      <div className="table-container">
+        <table id="myTable">
+          <thead>
+            <tr>
+              <th className="table-countries-country-header">State</th>
+              <th className="table-countries-country-header">Active</th>
+              <th className="table-countries-country-header">Confirmed</th>
+              <th className="table-countries-country-header">Recovered</th>
+              <th className="table-countries-country-header">Deaths</th>
+            </tr>
+          </thead>
+          {stateData.map(
+            ({ statecode, state, confirmed, recovered, deaths, active }) => (
+              <tbody key={statecode}>
+                <tr className="table-countries">
+                  <td className="table-countries-country">{state}</td>
+                  <td
+                    className="table-countries-deaths "
+                    style={{ color: '#2091ba' }}
+                  >
+                    {active}
+                  </td>
 
-      <table className="table-container">
-        <thead>
-          <tr>
-            <th className="table-countries-country-header">State</th>
-            <th className="table-countries-country-header">Active</th>
-            <th className="table-countries-country-header">Confirmed</th>
-            <th className="table-countries-country-header">Recovered</th>
-            <th className="table-countries-country-header">Deaths</th>
-          </tr>
-        </thead>
-        {stateData.map(
-          ({ statecode, state, confirmed, recovered, deaths, active }) => (
-            <tbody key={statecode}>
-              <tr className="table-countries">
-                <td className="table-countries-country">{state}</td>
-                <td className="table-countries-deaths">{active}</td>
-
-                <td className="table-countries-confirmed">{confirmed}</td>
-                <td className="table-countries-recovered">{recovered}</td>
-                <td className="table-countries-deaths">{deaths}</td>
-              </tr>
-            </tbody>
-          )
-        )}
-      </table>
-      <div className="global__stats-div">
+                  <td className="table-countries-confirmed">{confirmed}</td>
+                  <td className="table-countries-recovered">{recovered}</td>
+                  <td className="table-countries-deaths">{deaths}</td>
+                </tr>
+              </tbody>
+            )
+          )}
+        </table>
+      </div>
+      <div className="india-bar">
         <BarChart data={barchartData} />
       </div>
+
+      <section className="world-stats-container">
+        <div className="world-stats-image">
+          <Svg2 className="world-stats-image__img" />
+        </div>
+        <div className="world-stats-content">
+          <h2 className="world-stats-content__text">Check World Statistics</h2>
+          <Link to="/world">
+            <button className="world-stats-content__btn">
+              &#8618; Click Here
+            </button>
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
