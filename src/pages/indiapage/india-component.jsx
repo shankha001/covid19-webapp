@@ -169,7 +169,6 @@ function India() {
       }
     }
   };
-  console.log(stateData);
 
   return (
     <React.Fragment>

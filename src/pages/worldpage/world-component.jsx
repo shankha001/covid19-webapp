@@ -45,7 +45,6 @@ function World() {
     }
   };
 
-  console.log(countriesData);
   return (
     <React.Fragment>
       <h1 className="page-head">
