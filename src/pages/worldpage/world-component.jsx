@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import './world.styles.scss';
-import Countries from '../../components/Countries-data/countries-data.component';
 import Global from '../../components/Global-data/global-data.component';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Svg3 } from '../../assets/home-india.svg';
@@ -46,6 +45,7 @@ function World() {
     }
   };
 
+  console.log(countriesData);
   return (
     <React.Fragment>
       <h1 className="page-head">
@@ -77,7 +77,64 @@ function World() {
           />
         </div>
 
-        <Countries {...countriesData} />
+        <div className="table-container">
+          <table id="myTable1">
+            <thead>
+              <tr>
+                <th className="table-countries-country-header">Country</th>
+                <th className="table-countries-confirmed-header">
+                  Total Confirmed
+                </th>
+                <th className="table-countries-recovered-header">
+                  Total Recovered
+                </th>
+                <th className="table-countries-deaths-header">Total Deaths</th>
+
+                <th className="table-countries-confirmed-header">
+                  New Confirmed
+                </th>
+                <th className="table-countries-recovered-header">
+                  New Recovered
+                </th>
+                <th className="table-countries-deaths-header">New Deaths</th>
+              </tr>
+            </thead>
+
+            {countriesData.map(
+              ({
+                CountryCode,
+                Country,
+                NewConfirmed,
+                NewDeaths,
+                NewRecovered,
+                TotalConfirmed,
+                TotalDeaths,
+                TotalRecovered,
+              }) => (
+                <tbody key={CountryCode}>
+                  <tr className="table-countries">
+                    <td className="table-countries-country">{Country}</td>
+                    <td className="table-countries-confirmed">
+                      {TotalConfirmed}
+                    </td>
+                    <td className="table-countries-recovered">
+                      {TotalRecovered}
+                    </td>
+                    <td className="table-countries-deaths">{TotalDeaths}</td>
+
+                    <td className="table-countries-confirmed">
+                      + {NewConfirmed}
+                    </td>
+                    <td className="table-countries-recovered">
+                      + {NewRecovered}
+                    </td>
+                    <td className="table-countries-deaths">+ {NewDeaths}</td>
+                  </tr>
+                </tbody>
+              )
+            )}
+          </table>
+        </div>
 
         <section className="world-stats-container">
           <div className="world-stats-content">
