@@ -1,5 +1,6 @@
 .footer {
   margin-top: 100px;
+
   height: 100px;
   display: flex;
   justify-content: space-between;
@@ -26,6 +27,24 @@
     .dialogue {
       font-size: 20px;
       color: black;
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  .footer {
+    margin-top: 30px;
+    font-size: 25px;
+    &-social {
+      padding-left: 1px;
+      .fab {
+        padding: 8px;
+      }
+    }
+    &-brand {
+      padding-right: 5px;
+      .dialogue {
+        font-size: 15px;
+      }
     }
   }
 }

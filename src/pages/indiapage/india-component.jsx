@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import './india.styles.scss';
 import axios from 'axios';
+
 import { Link } from 'react-router-dom';
+
+import './india.styles.scss';
+import moment from 'moment';
 
 import PieChart from '../../components/pieChart/pieChart-component';
 import LineChart from '../../components/lineChart/lineChart-component';
 import BarChart from '../../components/barChart/barChart-component';
+
 import { ReactComponent as Svg2 } from '../../assets/home-world.svg';
+import IndiaStatsCard from '../../components/statscard/indiastatscard-conponent';
 
 function India() {
   const [indiaData, setindiaData] = useState([]);
@@ -14,25 +19,17 @@ function India() {
   const [chartData, setchartData] = useState([]);
   const [linechartData, setlinechartData] = useState([]);
   const [barchartData, setbarchartData] = useState([]);
-
   let liveData = [];
 
-  //Fetch Countries Data
-  useEffect(() => {
-    axios
-      .get('https://api.covid19api.com/country/india')
-      .then((res) => {
-        setindiaData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-  //Fetch State Data
+  //moment Date warning
+  moment.suppressDeprecationWarnings = true;
+
+  //Fetch  Data
   useEffect(() => {
     axios
       .get('https://api.covid19india.org/data.json')
       .then((res) => {
+        setindiaData(res.data.cases_time_series);
         setstateData(res.data.statewise);
       })
       .catch((err) => {
@@ -41,22 +38,21 @@ function India() {
   }, []);
 
   let stateLength = stateData.length;
-
   let length = indiaData.length;
-  let latestData = indiaData[length - 1];
 
-  for (let i in latestData) {
-    liveData.push(latestData[i]);
+  // Active confirmed deaths recovered cards
+  let x = stateData[0];
+  for (let i in x) {
+    liveData.push(x[i]);
   }
-  const confirmed = liveData[7];
-  const deaths = liveData[8];
-  const recovered = liveData[9];
-  const active = liveData[10];
+  const active = liveData[0];
+  const confirmed = liveData[1];
+  const deaths = liveData[2];
+  const recovered = liveData[8];
 
   //Pie CHART
   useEffect(() => {
     let newData = [active, recovered, deaths];
-
     setchartData({
       labels: ['Active', 'Recovered', 'Deaths'],
       datasets: [
@@ -86,10 +82,10 @@ function India() {
     let linechartDate = [];
     let linechartRecovered = [];
     for (let i = 0; i < length; i++) {
-      linechartConfirmed.push(indiaData[i].Confirmed);
-      linechartDeaths.push(indiaData[i].Deaths);
-      linechartRecovered.push(indiaData[i].Recovered);
-      linechartDate.push(indiaData[i].Date);
+      linechartConfirmed.push(indiaData[i].totalconfirmed);
+      linechartDeaths.push(indiaData[i].totaldeceased);
+      linechartRecovered.push(indiaData[i].totalrecovered);
+      linechartDate.push(indiaData[i].date);
     }
 
     setlinechartData({
@@ -175,30 +171,17 @@ function India() {
   };
 
   return (
-    <div>
-      <div className="global__stats">
-        <div className="global__stats-div">
-          <p className="global__stats-A3" style={{ color: '#2091ba' }}>
-            {active}
-          </p>
-          <p className="global__stats-B " data-aos="zoom-in">
-            Active
-          </p>
-        </div>
-        <div className="global__stats-div">
-          <p className="global__stats-A1">{confirmed}</p>
-          <p className="global__stats-B">Confirmed</p>
-        </div>
+    <React.Fragment>
+      <h1 className="page-head">
+        <span className="page-head-split">Statistics</span> - India
+      </h1>
 
-        <div className="global__stats-div">
-          <p className="global__stats-A2">{recovered}</p>
-          <p className="global__stats-B">Recovered</p>
-        </div>
-        <div className="global__stats-div">
-          <p className="global__stats-A3">{deaths}</p>
-          <p className="global__stats-B">Deaths</p>
-        </div>
-      </div>
+      <IndiaStatsCard
+        confirmed={confirmed}
+        active={active}
+        recovered={recovered}
+        deaths={deaths}
+      />
 
       <div className="global__stats-chart">
         <div className="global__stats-chart-1-of-2">
@@ -219,7 +202,7 @@ function India() {
           onChange={searchByState}
           placeholder="Search for State..."
           className="searchbox"
-          autocomplete="off"
+          autoComplete="off"
         />
       </div>
       <div className="table-container">
@@ -271,7 +254,7 @@ function India() {
           </Link>
         </div>
       </section>
-    </div>
+    </React.Fragment>
   );
 }
 

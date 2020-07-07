@@ -33,6 +33,19 @@
 }
 .page-head {
   color: white;
-  font-size: 45px;
-  margin-left: 40px;
+  font-size: 40px;
+  margin-left: 30px;
+  &-split {
+    font-size: 45px;
+    color: #fb7373;
+  }
+}
+@media screen and (max-width: 480px) {
+  .page-head {
+    font-size: 35px;
+
+    &-split {
+      font-size: 40px;
+    }
+  }
 }

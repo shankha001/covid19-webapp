@@ -31,7 +31,7 @@ class Countries extends React.Component {
 
     return (
       <div className="table-container">
-        <table id="myTable">
+        <table id="myTable1">
           {this.state.headerData.map(
             ({
               countryCode,

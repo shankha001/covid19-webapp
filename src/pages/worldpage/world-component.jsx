@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import './world.styles.scss';
 import axios from 'axios';
+
+import './world.styles.scss';
 import Countries from '../../components/Countries-data/countries-data.component';
 import Global from '../../components/Global-data/global-data.component';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Svg3 } from '../../assets/home-india.svg';
+import WorldStatsCard from '../../components/statscard/worldstatscard-component';
 
 function World() {
   const [globalData, setglobalData] = useState([]);
@@ -27,7 +29,7 @@ function World() {
     let input, filter, table, tr, td, i, txtValue;
     input = e.target.value;
     filter = input.toUpperCase();
-    table = document.getElementById('myTable');
+    table = document.getElementById('myTable1');
     tr = table.getElementsByTagName('tr');
     for (i = 0; i < tr.length; i++) {
       td = tr[i].getElementsByTagName('td')[0];
@@ -46,7 +48,18 @@ function World() {
 
   return (
     <React.Fragment>
-      <h1 className="page-head">Statistics-World</h1>
+      <h1 className="page-head">
+        <span className="page-head-split">Statistics</span> - World
+      </h1>
+      <WorldStatsCard
+        confirmed={globalData.TotalConfirmed}
+        recovered={globalData.TotalRecovered}
+        deaths={globalData.TotalDeaths}
+        newconfirmed={globalData.NewConfirmed}
+        newrecovered={globalData.NewRecovered}
+        newdeaths={globalData.NewDeaths}
+      />
+
       <Global {...globalData} />
       <div>
         <h1 className="table-title">Pandemic by Country</h1>
@@ -60,7 +73,7 @@ function World() {
             onChange={searchByCountry}
             placeholder="Search for Country..."
             className="searchbox"
-            autocomplete="off"
+            autoComplete="off"
           />
         </div>
 

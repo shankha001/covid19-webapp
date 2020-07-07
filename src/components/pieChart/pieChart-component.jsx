@@ -7,7 +7,7 @@ function PieChart(props) {
       data={props.data}
       options={{
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
       }}
     />
   );
