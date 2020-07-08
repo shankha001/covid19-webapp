@@ -8,7 +8,7 @@ import moment from 'moment';
 
 import PieChart from '../../components/pieChart/pieChart-component';
 import LineChart from '../../components/lineChart/lineChart-component';
-import BarChart from '../../components/barChart/barChart-component';
+import HorizontalBar from '../../components/barChart/horizontalbarChart-component';
 
 import { ReactComponent as Svg2 } from '../../assets/home-world.svg';
 import IndiaStatsCard from '../../components/statscard/indiastatscard-conponent';
@@ -237,8 +237,10 @@ function India() {
           )}
         </table>
       </div>
-      <div className="india-bar">
-        <BarChart data={barchartData} />
+      <div className="india-bar-wrapper">
+        <div className="india-bar">
+          <HorizontalBar data={barchartData} />
+        </div>
       </div>
 
       <section className="world-stats-container">
