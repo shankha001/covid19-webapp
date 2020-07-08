@@ -106,3 +106,12 @@ thead tr:first-child th {
     }
   }
 }
+@media screen and (max-width: 500px) {
+  .table-container {
+    width: 90%;
+  }
+  .searchbox {
+    margin-left: 25px;
+    padding: 10px 0px 10px 14px;
+  }
+}

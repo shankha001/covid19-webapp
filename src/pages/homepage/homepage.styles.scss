@@ -1,7 +1,6 @@
 .title-container {
   display: flex;
   flex-direction: row;
-  border-bottom: 1px solid white;
   flex-wrap: wrap;
 
   &-title {
@@ -55,7 +54,7 @@
   border-radius: 10px;
   outline: none;
   cursor: pointer;
-  border: 1px solid grey;
+  border: 1px solid #f79595;
   transition: all 0.4s;
   background-color: #161625;
   color: white;
@@ -72,6 +71,11 @@
     transform: translateY(2.5px);
   }
 }
+.gutter {
+  width: 90%;
+  margin: 0 auto;
+  border-bottom: 1px solid grey;
+}
 
 .info-container {
   display: flex;
@@ -79,7 +83,6 @@
   text-align: center;
   padding-bottom: 20px;
 
-  border-bottom: 1px solid white;
   flex-wrap: wrap;
 
   &__1 {

@@ -30,6 +30,8 @@ function HomePage() {
         </div>
       </section>
 
+      <div className="gutter">&nbsp;</div>
+
       <section className="info-container">
         <div className="info-container__1">
           <h2 className="info-container__1-title">
@@ -172,12 +174,16 @@ function HomePage() {
         </div>
       </section>
 
+      <div className="gutter">&nbsp;</div>
+
       <section className="world-stats-container">
         <div className="world-stats-image">
           <Svg2 className="world-stats-image__img" />
         </div>
         <div className="world-stats-content">
-          <h2 className="world-stats-content__text">Check World Statistics</h2>
+          <h2 className="world-stats-content__text">
+            Check <span style={{ color: '#f79595' }}>World</span> Statistics
+          </h2>
           <Link to="/world">
             <button className="world-stats-content__btn">
               &#8618; Click Here
@@ -188,7 +194,11 @@ function HomePage() {
 
       <section className="world-stats-container">
         <div className="world-stats-content">
-          <h2 className="world-stats-content__text">Check India Statistics</h2>
+          <h2 className="world-stats-content__text">
+            Check <span style={{ color: ' #FF9933' }}>In</span>
+            <span style={{ color: '#FFFFFF' }}>d</span>
+            <span style={{ color: '#138808' }}>ia</span> Statistics
+          </h2>
           <Link to="/india">
             <button className="world-stats-content__btn">
               &#8618; Click Here
