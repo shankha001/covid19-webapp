@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import axios from 'axios';
 
 import './world.styles.scss';
@@ -10,6 +11,7 @@ import WorldStatsCard from '../../components/statscard/worldstatscard-component'
 function World() {
   const [globalData, setglobalData] = useState([]);
   const [countriesData, setcountriesData] = useState([]);
+  const [isLoading, setisLoading] = useState(false);
 
   //Fetch Data
   useEffect(() => {
@@ -18,6 +20,7 @@ function World() {
       .then((res) => {
         setglobalData(res.data.Global);
         setcountriesData(res.data.Countries);
+        setisLoading(true);
       })
       .catch((err) => {
         console.log(err);
@@ -49,6 +52,9 @@ function World() {
     <React.Fragment>
       <h1 className="page-head">
         <span className="page-head-split">Statistics</span> - World
+        <div className="progressbar">
+          {!isLoading ? <LinearProgress color="secondary" /> : null}
+        </div>
       </h1>
       <WorldStatsCard
         confirmed={globalData.TotalConfirmed}

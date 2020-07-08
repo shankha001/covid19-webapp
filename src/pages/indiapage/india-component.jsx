@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+
+import LinearProgress from '@material-ui/core/LinearProgress';
+
 import axios from 'axios';
 
 import { Link } from 'react-router-dom';
@@ -20,7 +23,7 @@ function India() {
   const [linechartData, setlinechartData] = useState([]);
   const [barchartData, setbarchartData] = useState([]);
   let liveData = [];
-
+  const [isLoading, setisLoading] = useState(false);
   //moment Date warning
   moment.suppressDeprecationWarnings = true;
 
@@ -31,6 +34,7 @@ function India() {
       .then((res) => {
         setindiaData(res.data.cases_time_series);
         setstateData(res.data.statewise);
+        setisLoading(true);
       })
       .catch((err) => {
         console.log(err);
@@ -174,6 +178,9 @@ function India() {
     <React.Fragment>
       <h1 className="page-head">
         <span className="page-head-split">Statistics</span> - India
+        <div className="progressbar">
+          {!isLoading ? <LinearProgress color="secondary" /> : null}
+        </div>
       </h1>
 
       <IndiaStatsCard
