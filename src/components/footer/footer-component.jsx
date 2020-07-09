@@ -8,8 +8,9 @@ function Footer() {
         <a href="https://github.com/shankha001">
           <i className="fab fa-github"></i>
         </a>
-        <a href="https://www.linkedin.com/in/shankha-subhra-biswas-85b766191/">
-          <i className="fab fa-linkedin-in"></i>
+
+        <a href="mailto:shankhasubhrabiswas@gmail.com">
+          <i className="fas fab fa-envelope"></i>
         </a>
         <a href="https://www.instagram.com/ssb_op/">
           <i className="fab fa-instagram"></i>
