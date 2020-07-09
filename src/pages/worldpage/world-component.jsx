@@ -16,10 +16,21 @@ function World() {
   //Fetch Data
   useEffect(() => {
     axios
-      .get('https://api.covid19api.com/summary')
+      .get('https://disease.sh/v3/covid-19/countries?sort=cases')
       .then((res) => {
-        setglobalData(res.data.Global);
-        setcountriesData(res.data.Countries);
+        setglobalData(res.data);
+        setisLoading(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get('https://disease.sh/v3/covid-19/all')
+      .then((res) => {
+        setcountriesData(res.data);
         setisLoading(true);
       })
       .catch((err) => {
@@ -47,6 +58,10 @@ function World() {
       }
     }
   };
+  var confirmed = [];
+  for (let i = 0; i < globalData.length; i++) {
+    confirmed.push(globalData[i].active);
+  }
 
   return (
     <React.Fragment>
@@ -56,16 +71,17 @@ function World() {
           {!isLoading ? <LinearProgress color="secondary" /> : null}
         </div>
       </h1>
-      <WorldStatsCard
-        confirmed={globalData.TotalConfirmed}
-        recovered={globalData.TotalRecovered}
-        deaths={globalData.TotalDeaths}
-        newconfirmed={globalData.NewConfirmed}
-        newrecovered={globalData.NewRecovered}
-        newdeaths={globalData.NewDeaths}
-      />
 
-      <Global {...globalData} />
+      <WorldStatsCard
+        confirmed={countriesData.cases}
+        recovered={countriesData.recovered}
+        deaths={countriesData.deaths}
+        newconfirmed={countriesData.todayCases}
+        newrecovered={countriesData.todayRecovered}
+        newdeaths={countriesData.todayDeaths}
+      />
+      <Global {...countriesData} />
+
       <div>
         <h1 className="table-title">Pandemic by Country</h1>
         <div className="search-container">
@@ -104,36 +120,30 @@ function World() {
                 <th className="table-countries-deaths-header">New Deaths</th>
               </tr>
             </thead>
-
-            {countriesData.map(
+            {globalData.map(
               ({
-                CountryCode,
-                Country,
-                NewConfirmed,
-                NewDeaths,
-                NewRecovered,
-                TotalConfirmed,
-                TotalDeaths,
-                TotalRecovered,
+                country,
+                deaths,
+                recovered,
+                cases,
+                todayCases,
+                todayDeaths,
+                todayRecovered,
               }) => (
-                <tbody key={CountryCode}>
+                <tbody key={country}>
                   <tr className="table-countries">
-                    <td className="table-countries-country">{Country}</td>
-                    <td className="table-countries-confirmed">
-                      {TotalConfirmed}
-                    </td>
-                    <td className="table-countries-recovered">
-                      {TotalRecovered}
-                    </td>
-                    <td className="table-countries-deaths">{TotalDeaths}</td>
+                    <td className="table-countries-country">{country}</td>
+                    <td className="table-countries-confirmed">{cases}</td>
+                    <td className="table-countries-recovered">{recovered}</td>
+                    <td className="table-countries-deaths">{deaths}</td>
 
                     <td className="table-countries-confirmed">
-                      + {NewConfirmed}
+                      + {todayCases}
                     </td>
                     <td className="table-countries-recovered">
-                      + {NewRecovered}
+                      + {todayRecovered}
                     </td>
-                    <td className="table-countries-deaths">+ {NewDeaths}</td>
+                    <td className="table-countries-deaths">+ {todayDeaths}</td>
                   </tr>
                 </tbody>
               )

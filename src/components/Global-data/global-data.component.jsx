@@ -8,11 +8,7 @@ function Global(props) {
   const [barchartData, setbarchartData] = useState([]);
 
   useEffect(() => {
-    let newData = [
-      props.TotalConfirmed,
-      props.TotalDeaths,
-      props.TotalRecovered,
-    ];
+    let newData = [props.cases, props.deaths, props.recovered];
     setchartData({
       labels: ['Confirmed', 'Deaths', 'Recovered'],
       datasets: [
@@ -36,7 +32,7 @@ function Global(props) {
   }, [props]);
 
   useEffect(() => {
-    let newData = [props.NewConfirmed, props.NewRecovered, props.NewDeaths];
+    let newData = [props.todayCases, props.todayRecovered, props.todayDeaths];
 
     setbarchartData({
       labels: ['NewConfirmed', 'NewRecovered', 'NewDeaths'],
