@@ -12,7 +12,7 @@ function Footer() {
         <a href="mailto:shankhasubhrabiswas@gmail.com">
           <i className="fas fab fa-envelope"></i>
         </a>
-        <a href="https://www.instagram.com/ssb_op/">
+        <a href="https://instagram.com">
           <i className="fab fa-instagram"></i>
         </a>
       </div>
