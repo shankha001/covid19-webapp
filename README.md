@@ -4,7 +4,7 @@ All in One Covid Tracker
 
 ![Product](https://i.imgur.com/pWhNI9s.png)
 
-CovidAOT stands for Covid All in One Tracker. The WebApp provides statistics about the Covid19-Pandemic around the World and around India. People should become aware of the exact statistics of the Global Pandemic and this WebApp fullfulls the necessity by providing Live Statistics and various Charts based on the Data.
+CovidAOT stands for Covid All in One Tracker. The WebApp provides statistics about the Covid19-Pandemic around the World and around India. People should become aware of the exact statistics of the Global Pandemic and this WebApp fullfills the necessity by providing Live Statistics and various Charts based on the Live Data.
 
 
 ### Built With
@@ -25,7 +25,7 @@ To get a local copy up and running follow these simple steps.
 ```sh
 git clone 
 ```
-3. Install NPM packages
+2. Install NPM packages
 ```sh
 npm install
 ```
