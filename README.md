@@ -1,9 +1,35 @@
-## Covid-19-Tracker-WebApp
+## Covid-19-AOT
+All in One Covid Tracker
+## About The Project
 
-### `npm start`
+![Product](https://i.imgur.com/pWhNI9s.png)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+CovidAOT stands for Covid All in One Tracker. The WebApp provides statistics about the Covid19-Pandemic around the World and around India. People should become aware of the exact statistics of the Global Pandemic and this WebApp fullfulls the necessity by providing Live Statistics and various Charts based on the Data.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+
+### Built With
+
+* [ReactJS](https://reactjs.org/)
+* [ChartJS](https://www.chartjs.org/)
+* [MaterialUI](https://material-ui.com/)
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+Instructions on setting up your project locally.
+To get a local copy up and running follow these simple steps.
+
+### Installation
+
+1. Clone the repo
+```sh
+git clone 
+```
+3. Install NPM packages
+```sh
+npm install
+```
+3. Start Development Server
+```sh
+npm start
+```
