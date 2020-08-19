@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import LinearProgress from '@material-ui/core/LinearProgress';
-import axios from 'axios';
-
-import './world.styles.scss';
-import Global from '../../components/Global-data/global-data.component';
-import { Link } from 'react-router-dom';
-import { ReactComponent as Svg3 } from '../../assets/home-india.svg';
-import WorldStatsCard from '../../components/statscard/worldstatscard-component';
+import React, { useState, useEffect } from "react";
+import { LoaderOptions } from "../homepage/animations.js";
+import Lottie from "react-lottie";
+import axios from "axios";
+import Typist from "react-typist";
+import "./world.styles.scss";
+import Global from "../../components/Global-data/global-data.component";
+import { Link } from "react-router-dom";
+import { ReactComponent as Svg3 } from "../../assets/home-india.svg";
+import WorldStatsCard from "../../components/statscard/worldstatscard-component";
 
 function World() {
   const [globalData, setglobalData] = useState([]);
@@ -16,7 +17,7 @@ function World() {
   //Fetch Data
   useEffect(() => {
     axios
-      .get('https://disease.sh/v3/covid-19/countries?sort=cases')
+      .get("https://disease.sh/v3/covid-19/countries?sort=cases")
       .then((res) => {
         setglobalData(res.data);
         setisLoading(true);
@@ -28,7 +29,7 @@ function World() {
 
   useEffect(() => {
     axios
-      .get('https://disease.sh/v3/covid-19/all')
+      .get("https://disease.sh/v3/covid-19/all")
       .then((res) => {
         setcountriesData(res.data);
         setisLoading(true);
@@ -42,18 +43,18 @@ function World() {
     let input, filter, table, tr, td, i, txtValue;
     input = e.target.value;
     filter = input.toUpperCase();
-    table = document.getElementById('myTable1');
-    tr = table.getElementsByTagName('tr');
+    table = document.getElementById("myTable1");
+    tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName('td')[0];
+      td = tr[i].getElementsByTagName("td")[0];
 
       if (td) {
         txtValue = td.textContent || td.innerText;
 
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = '';
+          tr[i].style.display = "";
         } else {
-          tr[i].style.display = 'none';
+          tr[i].style.display = "none";
         }
       }
     }
@@ -66,10 +67,19 @@ function World() {
   return (
     <React.Fragment>
       <h1 className="page-head">
-        <span className="page-head-split">Statistics</span> - World
-        <div className="progressbar">
-          {!isLoading ? <LinearProgress color="secondary" /> : null}
-        </div>
+        {!isLoading ? (
+          <Lottie
+            options={LoaderOptions}
+            height={70}
+            width={100}
+            style={{ marginLeft: "-10px", marginBottom: "-30px" }}
+          />
+        ) : (
+          <Typist cursor={{ hideWhenDone: true }}>
+            <span className="page-head-split">Statistics</span>
+            <Typist.Delay ms={500} /> - World
+          </Typist>
+        )}
       </h1>
 
       <WorldStatsCard

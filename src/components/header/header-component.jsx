@@ -1,17 +1,21 @@
-import React from 'react';
-import './header.styles.scss';
-import { Link } from 'react-router-dom';
-import { ReactComponent as Logo } from '../../assets/virus.svg';
+import React, { useEffect } from "react";
+import "./header.styles.scss";
+import { Link } from "react-router-dom";
+import { ReactComponent as Logo } from "../../assets/virus.svg";
 
-function Header() {
+function Header({ location }) {
+  useEffect(() => {
+    console.log(location);
+  }, [location]);
+
   const handleClick = () => {
-    document.querySelector('ul').classList.toggle('active');
-    document.querySelector('header').classList.toggle('margin-big');
+    document.querySelector("ul").classList.toggle("active");
+    document.querySelector("header").classList.toggle("margin-big");
   };
 
   const handleLinkClick = () => {
-    document.querySelector('ul').classList.toggle('active');
-    document.querySelector('header').classList.toggle('margin-big');
+    document.querySelector("ul").classList.toggle("active");
+    document.querySelector("header").classList.toggle("margin-big");
   };
   return (
     <React.Fragment>
@@ -22,7 +26,7 @@ function Header() {
 
         <div>
           <div className="toggle" onClick={handleClick}>
-            <i class="fas fa-bars menu"></i>
+            <i className="fas fa-bars menu"></i>
           </div>
           <ul className="options">
             <li>
@@ -41,7 +45,7 @@ function Header() {
               <Link className="option" to="/india" onClick={handleLinkClick}>
                 <img
                   className="icon "
-                  src={require('../../assets/images/india.png')}
+                  src={require("../../assets/images/india.png")}
                   alt="hello"
                 />
                 India
