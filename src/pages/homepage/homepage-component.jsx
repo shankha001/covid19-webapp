@@ -1,7 +1,7 @@
 import React from "react";
 import "./homepage.styles.scss";
 import { Link } from "react-router-dom";
-// import { ReactComponent as Svg1 } from "../../assets/home-title.svg";
+import { ReactComponent as Svg1 } from "../../assets/home-title.svg";
 import { ReactComponent as Svg2 } from "../../assets/home-world.svg";
 import { ReactComponent as Svg3 } from "../../assets/home-india.svg";
 import Lottie from "react-lottie";
@@ -15,7 +15,6 @@ import {
   SneezingOptions,
   ContaminatedAirOptions,
   PersonalContactOptions,
-  DataVisualOptions,
 } from "./animations";
 
 function HomePage() {
@@ -41,7 +40,7 @@ function HomePage() {
           </Link>
         </div>
         <div className="title-container-image">
-          <Lottie options={DataVisualOptions} />
+          <Svg1 className="logo" />
         </div>
       </section>
 
@@ -153,7 +152,12 @@ function HomePage() {
             <h2 className="info-container__1-title">Prevention</h2>
             <div className="symptoms-container-wrap">
               <div className="symptoms-container">
-                <Lottie options={WashOptions} height={150} width={150} />
+                <Lottie
+                  options={WashOptions}
+                  height={150}
+                  width={150}
+                  style={{ clipPath: "circle(40%)" }}
+                />
 
                 <h3>
                   <span className="split">Wash</span>
@@ -161,7 +165,12 @@ function HomePage() {
                 </h3>
               </div>
               <div className="symptoms-container">
-                <Lottie options={MaskOptions} height={150} width={150} />
+                <Lottie
+                  options={MaskOptions}
+                  height={150}
+                  width={150}
+                  style={{ clipPath: "circle(40%)" }}
+                />
 
                 <h3>
                   <span className="split">Wear</span>

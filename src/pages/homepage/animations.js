@@ -6,7 +6,6 @@ import Sneezing from "../../lotties/sneezing.json";
 import Headache from "../../lotties/headache.json";
 import ContaminatedAir from "../../lotties/contaminated-air.json";
 import PersonalContact from "../../lotties/personal-contact.json";
-import DataVisual from "../../lotties/data-visual.json";
 import Loader from "../../lotties/loader.json";
 
 export const SocialDistancingOptions = {
@@ -76,15 +75,6 @@ export const PersonalContactOptions = {
   loop: true,
   autoplay: true,
   animationData: PersonalContact,
-  rendererSettings: {
-    preserveAspectRatio: "xMidYMid slice",
-  },
-};
-
-export const DataVisualOptions = {
-  loop: true,
-  autoplay: true,
-  animationData: DataVisual,
   rendererSettings: {
     preserveAspectRatio: "xMidYMid slice",
   },
