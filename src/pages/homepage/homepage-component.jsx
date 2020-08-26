@@ -1,21 +1,9 @@
-import React from "react";
-import "./homepage.styles.scss";
-import { Link } from "react-router-dom";
-import { ReactComponent as Svg1 } from "../../assets/home-title.svg";
-import { ReactComponent as Svg2 } from "../../assets/home-world.svg";
-import { ReactComponent as Svg3 } from "../../assets/home-india.svg";
-import Lottie from "react-lottie";
-import Typist from "react-typist";
-
-import {
-  SocialDistancingOptions,
-  FeverOptions,
-  MaskOptions,
-  WashOptions,
-  SneezingOptions,
-  ContaminatedAirOptions,
-  PersonalContactOptions,
-} from "./animations";
+import React from 'react';
+import './homepage.styles.scss';
+import { Link } from 'react-router-dom';
+import { ReactComponent as Svg1 } from '../../assets/home-title.svg';
+import { ReactComponent as Svg2 } from '../../assets/home-world.svg';
+import { ReactComponent as Svg3 } from '../../assets/home-india.svg';
 
 function HomePage() {
   return (
@@ -23,9 +11,7 @@ function HomePage() {
       <section className="title-container">
         <div className="title-container-title">
           <h1 className="title">COVID-19</h1>
-          <span className="title__sub">
-            <Typist cursor={{ hideWhenDone: true }}>All in One Tracker</Typist>
-          </span>
+          <span className="title__sub">All in One Tracker</span>
           <Link to="/world">
             <button className="title__button">
               <span className="split">Global</span>
@@ -54,19 +40,17 @@ function HomePage() {
 
           <div className="symptoms-container-wrap">
             <div className="symptoms-container">
-              <Lottie
-                options={SneezingOptions}
-                height={150}
-                width={150}
-                style={{ clipPath: "circle(40%)" }}
+              <img
+                className="symptoms"
+                src={require('../../assets/images/cough.jpg')}
+                alt="hello"
               />
-
               <h3>Dry Cough</h3>
             </div>
             <div className="symptoms-container">
               <img
                 className="symptoms"
-                src={require("../../assets/images/throat.jpg")}
+                src={require('../../assets/images/throat.jpg')}
                 alt="hello"
               />
               <h3>
@@ -74,7 +58,11 @@ function HomePage() {
               </h3>
             </div>
             <div className="symptoms-container">
-              <Lottie options={FeverOptions} height={150} width={150} />
+              <img
+                className="symptoms"
+                src={require('../../assets/images/fever.jpg')}
+                alt="hello"
+              />
               <h3>Fever</h3>
             </div>
           </div>
@@ -82,7 +70,7 @@ function HomePage() {
             <div className="symptoms-container">
               <img
                 className="symptoms"
-                src={require("../../assets/images/tiredness.jpg")}
+                src={require('../../assets/images/tiredness.jpg')}
                 alt="hello"
               />
               <h3>Tiredness</h3>
@@ -90,7 +78,7 @@ function HomePage() {
             <div className="symptoms-container">
               <img
                 className="symptoms"
-                src={require("../../assets/images/breathing.jpg")}
+                src={require('../../assets/images/breathing.jpg')}
                 alt="hello"
               />
               <h3>
@@ -100,7 +88,7 @@ function HomePage() {
             <div className="symptoms-container">
               <img
                 className="symptoms"
-                src={require("../../assets/images/headache.png")}
+                src={require('../../assets/images/headache.png')}
                 alt="hello"
               />
               <h3>Headache</h3>
@@ -113,11 +101,10 @@ function HomePage() {
             <h2 className="info-container__1-title">How It Spreads</h2>
             <div className="symptoms-container-wrap">
               <div className="symptoms-container">
-                <Lottie
-                  options={PersonalContactOptions}
-                  height={150}
-                  width={150}
-                  style={{ clipPath: "circle(40%)", paddingLeft: "-150px" }}
+                <img
+                  className="symptoms"
+                  src={require('../../assets/images/handshake.jpg')}
+                  alt="hello"
                 />
                 <h3>
                   <span className="split">Personal</span> Contact
@@ -126,7 +113,7 @@ function HomePage() {
               <div className="symptoms-container">
                 <img
                   className="symptoms"
-                  src={require("../../assets/images/massgather.jpg")}
+                  src={require('../../assets/images/massgather.jpg')}
                   alt="hello"
                 />
                 <h3>
@@ -134,13 +121,11 @@ function HomePage() {
                 </h3>
               </div>
               <div className="symptoms-container">
-                <Lottie
-                  options={ContaminatedAirOptions}
-                  height={150}
-                  width={150}
-                  style={{ clipPath: "circle(40%)" }}
+                <img
+                  className="symptoms"
+                  src={require('../../assets/images/sneezing.jpg')}
+                  alt="hello"
                 />
-
                 <h3>
                   <span className="split">Contaminated</span>
                   <span>Air</span>
@@ -152,36 +137,32 @@ function HomePage() {
             <h2 className="info-container__1-title">Prevention</h2>
             <div className="symptoms-container-wrap">
               <div className="symptoms-container">
-                <Lottie
-                  options={WashOptions}
-                  height={150}
-                  width={150}
-                  style={{ clipPath: "circle(40%)" }}
+                <img
+                  className="symptoms"
+                  src={require('../../assets/images/wash.jpg')}
+                  alt="hello"
                 />
-
                 <h3>
                   <span className="split">Wash</span>
                   <span>Hands</span>
                 </h3>
               </div>
               <div className="symptoms-container">
-                <Lottie
-                  options={MaskOptions}
-                  height={150}
-                  width={150}
-                  style={{ clipPath: "circle(40%)" }}
+                <img
+                  className="symptoms"
+                  src={require('../../assets/images/mask.jpg')}
+                  alt="hello"
                 />
-
                 <h3>
                   <span className="split">Wear</span>
                   <span>Mask</span>
                 </h3>
               </div>
               <div className="symptoms-container">
-                <Lottie
-                  options={SocialDistancingOptions}
-                  height={150}
-                  width={150}
+                <img
+                  className="symptoms"
+                  src={require('../../assets/images/distance.jpg')}
+                  alt="hello"
                 />
                 <h3>
                   <span className="split">Social</span>
@@ -201,7 +182,7 @@ function HomePage() {
         </div>
         <div className="world-stats-content">
           <h2 className="world-stats-content__text">
-            Check <span style={{ color: "#f79595" }}>World</span> Statistics
+            Check <span style={{ color: '#f79595' }}>World</span> Statistics
           </h2>
           <Link to="/world">
             <button className="world-stats-content__btn">
@@ -214,9 +195,9 @@ function HomePage() {
       <section className="world-stats-container">
         <div className="world-stats-content">
           <h2 className="world-stats-content__text">
-            Check <span style={{ color: " #FF9933" }}>In</span>
-            <span style={{ color: "#FFFFFF" }}>d</span>
-            <span style={{ color: "#138808" }}>ia</span> Statistics
+            Check <span style={{ color: ' #FF9933' }}>In</span>
+            <span style={{ color: '#FFFFFF' }}>d</span>
+            <span style={{ color: '#138808' }}>ia</span> Statistics
           </h2>
           <Link to="/india">
             <button className="world-stats-content__btn">

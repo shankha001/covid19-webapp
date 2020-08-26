@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
-import Lottie from "react-lottie";
-import { LoaderOptions } from "../homepage/animations.js";
-import Typist from "react-typist";
+import React, { useState, useEffect } from 'react';
+import Lottie from 'react-lottie';
+import { LoaderOptions } from '../../lotties/animations';
+import Typist from 'react-typist';
 
-import axios from "axios";
-import { Link } from "react-router-dom";
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-import "./india.styles.scss";
-import moment from "moment";
+import './india.styles.scss';
+import moment from 'moment';
 
-import PieChart from "../../components/pieChart/pieChart-component";
-import LineChart from "../../components/lineChart/lineChart-component";
-import HorizontalBar from "../../components/barChart/horizontalbarChart-component";
+import PieChart from '../../components/pieChart/pieChart-component';
+import LineChart from '../../components/lineChart/lineChart-component';
+import HorizontalBar from '../../components/barChart/horizontalbarChart-component';
 
-import { ReactComponent as Svg2 } from "../../assets/home-world.svg";
-import IndiaStatsCard from "../../components/statscard/indiastatscard-conponent";
+import { ReactComponent as Svg2 } from '../../assets/home-world.svg';
+import IndiaStatsCard from '../../components/statscard/indiastatscard-conponent';
 
 function India() {
   const [indiaData, setindiaData] = useState([]);
@@ -30,7 +30,7 @@ function India() {
   //Fetch  Data
   useEffect(() => {
     axios
-      .get("https://api.covid19india.org/data.json")
+      .get('https://api.covid19india.org/data.json')
       .then((res) => {
         setindiaData(res.data.cases_time_series);
         setstateData(res.data.statewise);
@@ -58,20 +58,20 @@ function India() {
   useEffect(() => {
     let newData = [active, recovered, deaths];
     setchartData({
-      labels: ["Active", "Recovered", "Deaths"],
+      labels: ['Active', 'Recovered', 'Deaths'],
       datasets: [
         {
-          label: "# Stats",
+          label: '# Stats',
           data: newData,
           backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 206, 86, 0.2)",
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
           ],
           borderColor: [
-            "rgba(255, 99, 132, 1)",
-            "rgba(54, 162, 235, 1)",
-            "rgba(255, 206, 86, 1)",
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
           ],
           borderWidth: 1,
         },
@@ -96,25 +96,25 @@ function India() {
       labels: linechartDate,
       datasets: [
         {
-          label: "Total Confirmed",
+          label: 'Total Confirmed',
           data: linechartConfirmed,
           fill: true,
-          backgroundColor: "rgba(75,192,192,0.2)",
-          borderColor: "rgba(75,192,192,1)",
+          backgroundColor: 'rgba(75,192,192,0.2)',
+          borderColor: 'rgba(75,192,192,1)',
         },
         {
-          label: "Total Deaths",
+          label: 'Total Deaths',
           data: linechartDeaths,
           fill: false,
-          backgroundColor: "red",
-          borderColor: "red",
+          backgroundColor: 'red',
+          borderColor: 'red',
         },
         {
-          label: "Total Recovered",
+          label: 'Total Recovered',
           data: linechartRecovered,
           fill: false,
-          backgroundColor: "orange",
-          borderColor: "orange",
+          backgroundColor: 'orange',
+          borderColor: 'orange',
         },
       ],
     });
@@ -136,18 +136,18 @@ function India() {
       labels: barchartlabel,
       datasets: [
         {
-          label: "Active",
+          label: 'Active',
           data: barchartActive,
           fill: true,
-          backgroundColor: "rgba(75,192,192,0.2)",
-          borderColor: "rgba(75,192,192,1)",
+          backgroundColor: 'rgba(75,192,192,0.2)',
+          borderColor: 'rgba(75,192,192,1)',
         },
         {
-          label: "Deaths",
+          label: 'Deaths',
           data: barchartDeaths,
           fill: true,
-          backgroundColor: "red",
-          borderColor: "rgba(75,192,192,1)",
+          backgroundColor: 'red',
+          borderColor: 'rgba(75,192,192,1)',
         },
       ],
     });
@@ -157,18 +157,18 @@ function India() {
     let input, filter, table, tr, td, i, txtValue;
     input = e.target.value;
     filter = input.toUpperCase();
-    table = document.getElementById("myTable");
-    tr = table.getElementsByTagName("tr");
+    table = document.getElementById('myTable');
+    tr = table.getElementsByTagName('tr');
     for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
+      td = tr[i].getElementsByTagName('td')[0];
 
       if (td) {
         txtValue = td.textContent || td.innerText;
 
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
+          tr[i].style.display = '';
         } else {
-          tr[i].style.display = "none";
+          tr[i].style.display = 'none';
         }
       }
     }
@@ -182,7 +182,7 @@ function India() {
             options={LoaderOptions}
             height={70}
             width={100}
-            style={{ marginLeft: "-10px", marginBottom: "-30px" }}
+            style={{ marginLeft: '-10px', marginBottom: '-30px' }}
           />
         ) : (
           <Typist cursor={{ hideWhenDone: true }}>
@@ -239,7 +239,7 @@ function India() {
                   <td className="table-countries-country">{state}</td>
                   <td
                     className="table-countries-deaths "
-                    style={{ color: "#2091ba" }}
+                    style={{ color: '#2091ba' }}
                   >
                     {active}
                   </td>
