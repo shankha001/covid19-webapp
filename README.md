@@ -1,5 +1,7 @@
 ## Covid-19-AOT
 All in One Covid Tracker
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9b0299c3-adb6-415b-9a2d-a6b86c562324/deploy-status)](https://covitaot.netlify.app/)
 ## About The Project
 
 ![Product](https://i.imgur.com/pWhNI9s.png)
@@ -33,3 +35,9 @@ npm install
 ```sh
 npm start
 ```
+
+### License
+
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+

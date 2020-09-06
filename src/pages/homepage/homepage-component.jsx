@@ -4,14 +4,16 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as Svg1 } from '../../assets/home-title.svg';
 import { ReactComponent as Svg2 } from '../../assets/home-world.svg';
 import { ReactComponent as Svg3 } from '../../assets/home-india.svg';
-
+import Typist from 'react-typist';
 function HomePage() {
   return (
     <React.Fragment>
       <section className="title-container">
         <div className="title-container-title">
           <h1 className="title">COVID-19</h1>
-          <span className="title__sub">All in One Tracker</span>
+          <span className="title__sub">
+            <Typist cursor={{ hideWhenDone: true }}>All in One Tracker</Typist>
+          </span>
           <Link to="/world">
             <button className="title__button">
               <span className="split">Global</span>
@@ -98,7 +100,9 @@ function HomePage() {
 
         <div className="info-container__1">
           <div className="spread">
-            <h2 className="info-container__1-title">How It Spreads</h2>
+            <h2 className="info-container__1-title">
+              How It <span className="title-color">Spreads</span>
+            </h2>
             <div className="symptoms-container-wrap">
               <div className="symptoms-container">
                 <img
@@ -134,7 +138,7 @@ function HomePage() {
             </div>
           </div>
           <div className="prevention">
-            <h2 className="info-container__1-title">Prevention</h2>
+            <h2 className="info-container__1-title ">Prevention</h2>
             <div className="symptoms-container-wrap">
               <div className="symptoms-container">
                 <img
