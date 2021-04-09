@@ -86,9 +86,9 @@ function India() {
     let linechartDate = [];
     let linechartRecovered = [];
     for (let i = 0; i < length; i++) {
-      linechartConfirmed.push(indiaData[i].totalconfirmed);
-      linechartDeaths.push(indiaData[i].totaldeceased);
-      linechartRecovered.push(indiaData[i].totalrecovered);
+      linechartConfirmed.push(indiaData[i].dailyconfirmed);
+      linechartDeaths.push((indiaData[i].dailydeceased));
+      linechartRecovered.push(indiaData[i].dailyrecovered);
       linechartDate.push(indiaData[i].date);
     }
 
