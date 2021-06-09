@@ -1,10 +1,10 @@
 ## Covid-19-AOT
 All in One Covid Tracker
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9b0299c3-adb6-415b-9a2d-a6b86c562324/deploy-status)](https://covitaot.netlify.app/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9b0299c3-adb6-415b-9a2d-a6b86c562324/deploy-status)](https://covidaot.netlify.app/)
 ## About The Project
 
-![Product](https://i.imgur.com/pWhNI9s.png)
+![Product](https://i.imgur.com/BVwuLzA.png)
 
 CovidAOT stands for Covid All in One Tracker. The WebApp provides statistics about the Covid19-Pandemic around the World and around India. People should become aware of the exact statistics of the Global Pandemic and this WebApp fullfills the necessity by providing Live Statistics and various Charts based on the Live Data.
 
