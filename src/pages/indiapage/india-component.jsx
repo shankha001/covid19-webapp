@@ -30,7 +30,7 @@ function India() {
   //Fetch  Data
   useEffect(() => {
     axios
-      .get('https://api.covid19india.org/data.json')
+      .get('https://data.covid19india.org/data.json')
       .then((res) => {
         setindiaData(res.data.cases_time_series);
         setstateData(res.data.statewise);
